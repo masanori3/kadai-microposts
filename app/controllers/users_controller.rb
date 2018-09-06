@@ -45,6 +45,17 @@ class UsersController < ApplicationController
     
   end
   
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+    
+    #以下は消して新たにコントローラーをつくり、そこに移す。それか消す。
+    #@currrent_user_likes = current_user.likes
+    
+    
+    counts(@user)
+  end
+    
   private
   
   def user_params
